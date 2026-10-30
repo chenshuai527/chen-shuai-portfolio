@@ -7,6 +7,7 @@ import {creatorSkills,xReader,posterCollectionCover} from './creator-work-data.j
 const reel=document.querySelector('[data-work-reel]');
 if(reel){
   const viewport=reel.querySelector('.work-reel-viewport');
+  reel.dataset.engine='loading';
   const canvas=document.createElement('canvas');canvas.className='work-stage-canvas';canvas.setAttribute('aria-hidden','true');reel.prepend(canvas);
   try{
     const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
@@ -21,8 +22,24 @@ if(reel){
     // This transparent backdrop only receives shadows. Writing its invisible
     // surface into the depth buffer would cut holes in the waving/flipped paper.
     const receiver=new THREE.Mesh(new THREE.PlaneGeometry(150,30),new THREE.ShadowMaterial({opacity:.2,depthWrite:false}));receiver.position.z=-.5;receiver.receiveShadow=true;scene.add(receiver);
-    // An individual image failure must never remove the large paper exhibition.
-    const loadImage=item=>new Promise(resolve=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>resolve(null);image.src=item.src||item.image;});
+    // Keep the real HTML covers visible while textures load. Retry transient
+    // hosted image failures instead of turning a failed texture into blank paper.
+    const loadImage=async item=>{
+      const url=new URL(item.src||item.image,document.baseURI);
+      const cached=[...document.images].find(image=>image.src===url.href&&image.complete&&image.naturalWidth);
+      if(cached)return cached;
+      for(let attempt=0;attempt<3;attempt++){
+        const image=await new Promise(resolve=>{
+          const image=new Image();let timer;
+          const finish=value=>{clearTimeout(timer);image.onload=image.onerror=null;resolve(value);};
+          image.decoding='async';image.onload=()=>finish(image.naturalWidth?image:null);image.onerror=()=>finish(null);
+          timer=setTimeout(()=>finish(null),8000);
+          const request=new URL(url);if(attempt)request.searchParams.set('image_retry',String(attempt));image.src=request.href;
+        });
+        if(image)return image;
+      }
+      return null;
+    };
     const [photos,miniScreens,skillImages,xImages,coverImages,herbalCover]=await Promise.all([
       Promise.all([posters[0],posters[4],posters[5]].map(loadImage)),
       Promise.all(miniProgram.images.map(loadImage)),
@@ -31,6 +48,7 @@ if(reel){
       Promise.all([miniProgram.cover,posterCollectionCover,creatorSkills[1].cover,xReader.cover].map(src=>loadImage({src}))),
       loadImage({src:creatorSkills[2].cover})
     ]);
+    if(coverImages.some(image=>!image)||!herbalCover)throw new Error('A cover texture is not ready; keep the HTML exhibition.');
     const miniCover=coverImages[0];
     const coverRatio=miniCover?miniCover.naturalWidth/miniCover.naturalHeight:1672/941;
     const items=[...reel.querySelectorAll('[data-work-flip]')],turns=items.map(()=>({angle:0,from:0,target:0,started:0,progress:1}));

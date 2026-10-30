@@ -89,11 +89,11 @@ if(host&&!document.documentElement.classList.contains('is-embedded')){
     // Keep the cat behind all foreground blades, in the same photographic scene.
     const meadowCat=await createMeadowCat({THREE,scene,uniforms,bladeMaterial,host}).catch(()=>{host.dataset.catState='unavailable';return null;});
     const camera=new THREE.Camera();let lastDraw=performance.now(),time=0,dirty=true,frames=0,lastCount=0;
-    const stage=document.getElementById('journey-stage'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
+    const stage=document.getElementById('journey-stage');
     function enabled(){
       if(stage)return stage.dataset.motion==='on';
-      try{const saved=localStorage.getItem('chen-shuai-journey-motion');if(saved!==null)return saved==='1';}catch{}
-      return !reduced.matches;
+      try{const saved=localStorage.getItem('chen-shuai-motion-choice');if(saved!==null)return saved==='on';}catch{}
+      return true;
     }
     function resize(){
       const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);uniforms.uAspect.value=w/Math.max(1,h);uniforms.uResolution.value.set(w,h);

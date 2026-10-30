@@ -15,15 +15,17 @@
   };
   const t=key=>words[key]?.[document.documentElement.lang==='en'?1:0]||key;
   const stationBounds=station=>(station.querySelector('.journey-visual')||station.querySelector('.station-label')||station).getBoundingClientRect();
-  let motion=!matchMedia('(prefers-reduced-motion:reduce)').matches,visited=new Set(),lastIndex=0;
-  try{const saved=localStorage.getItem('chen-shuai-journey-motion');if(saved!==null)motion=saved==='1';visited=new Set(JSON.parse(sessionStorage.getItem('chen-shuai-flat-five-visited')||'[]').filter(n=>Number.isInteger(n)&&n>=0&&n<stations.length));lastIndex=Math.max(0,Math.min(stations.length-1,Number(sessionStorage.getItem('chen-shuai-flat-five-last')||0)));}catch{}
+  // The portfolio's motion is an explicit part of its design. Only a visitor's
+  // choice on our switch should disable it, not an inherited automatic value.
+  let motion=true,visited=new Set(),lastIndex=0;
+  try{const saved=localStorage.getItem('chen-shuai-motion-choice');if(saved!==null)motion=saved==='on';visited=new Set(JSON.parse(sessionStorage.getItem('chen-shuai-flat-five-visited')||'[]').filter(n=>Number.isInteger(n)&&n>=0&&n<stations.length));lastIndex=Math.max(0,Math.min(stations.length-1,Number(sessionStorage.getItem('chen-shuai-flat-five-last')||0)));}catch{}
   let points=[],lengths=[],distance=0,total=0,token=0,touring=false,bypass=false,statusKey='idle',lastSize='',resizeFrame=0,previousMobile=false;
   let catPosition=null;
   stage.dataset.catMode='guide-only';
   function renderText(){document.querySelectorAll('[data-journey-i18n]').forEach(e=>e.textContent=t(e.dataset.journeyI18n));motionButton.textContent=t(motion?'motionOn':'motionOff');motionButton.setAttribute('aria-pressed',String(motion));tourButton.querySelector('[data-journey-i18n]').textContent=t(touring?'stop':'tour');tourButton.setAttribute('aria-pressed',String(touring));status.textContent=t(statusKey);stage.dataset.motion=motion?'on':'off';document.querySelector('.journey-progress').setAttribute('aria-label',document.documentElement.lang==='en'?'Exploration progress':'探索进度');}
   function setStatus(key){statusKey=key;status.textContent=t(key);}
   function progress(){stations.forEach((s,i)=>s.classList.toggle('is-visited',visited.has(i)));document.querySelectorAll('.journey-progress>i').forEach((dot,i)=>{dot.classList.toggle('is-visited',visited.has(i));dot.classList.toggle('is-current',lastIndex===i);});}
-  function save(){try{sessionStorage.setItem('chen-shuai-flat-five-visited',JSON.stringify([...visited]));sessionStorage.setItem('chen-shuai-flat-five-last',String(lastIndex));localStorage.setItem('chen-shuai-journey-motion',motion?'1':'0');}catch{}}
+  function save(){try{sessionStorage.setItem('chen-shuai-flat-five-visited',JSON.stringify([...visited]));sessionStorage.setItem('chen-shuai-flat-five-last',String(lastIndex));localStorage.setItem('chen-shuai-motion-choice',motion?'on':'off');localStorage.setItem('chen-shuai-journey-motion',motion?'1':'0');}catch{}}
   function place(value){
     if(!total)return;
     const previous=distance;distance=Math.max(0,Math.min(total,value));
