@@ -40,17 +40,11 @@ if(reel){
       }
       return null;
     };
-    const [photos,miniScreens,skillImages,xImages,coverImages,herbalCover]=await Promise.all([
-      Promise.all([posters[0],posters[4],posters[5]].map(loadImage)),
-      Promise.all(miniProgram.images.map(loadImage)),
-      Promise.all(creatorSkills.map(loadImage)),
-      Promise.all(xReader.images.slice(0,2).map(loadImage)),
-      Promise.all([miniProgram.cover,posterCollectionCover,creatorSkills[1].cover,xReader.cover].map(src=>loadImage({src}))),
-      loadImage({src:creatorSkills[2].cover})
-    ]);
-    if(coverImages.some(image=>!image)||!herbalCover)throw new Error('A cover texture is not ready; keep the HTML exhibition.');
-    const miniCover=coverImages[0];
-    const coverRatio=miniCover?miniCover.naturalWidth/miniCover.naturalHeight:1672/941;
+    // The four approved covers have the same dimensions. Set up the scene now;
+    // an unrelated slow image must not hold the current cover hostage.
+    const photos=Array(3).fill(null),miniScreens=Array(3).fill(null),skillImages=Array(3).fill(null),xImages=Array(2).fill(null),coverImages=Array(4).fill(null);
+    let herbalCover=null;
+    const coverRatio=1672/941;
     const items=[...reel.querySelectorAll('[data-work-flip]')],turns=items.map(()=>({angle:0,from:0,target:0,started:0,progress:1}));
     const en=()=>document.documentElement.lang==='en';
     const tones=['#325c48','#33466b','#4a6142','#3f4a68'];
@@ -171,8 +165,27 @@ if(reel){
     viewport.addEventListener('pointerleave',()=>{mouseX=mouseY=0;});
     titleEl.addEventListener('pointermove',event=>{const box=titleEl.getBoundingClientRect();mouseX=(event.clientX-box.left)/box.width-.5;mouseY=((event.clientY-box.top)/Math.max(1,box.height)-.5)*.5;},{passive:true});
     titleEl.addEventListener('pointerleave',()=>{mouseX=mouseY=0;});
-    reel.dataset.engine='webgl';
     function refreshTextures(){meshes.forEach((mesh,i)=>{mesh.material.map.dispose();mesh.material.map=paperTexture(i,true);mesh.material.needsUpdate=true;if(mesh.userData.back){const back=mesh.userData.back;back.material.map.dispose();back.material.map=paperTexture(i);back.material.map.repeat.x=-1;back.material.map.offset.x=1;back.material.needsUpdate=true;}});}
+    function refreshFace(index,front){
+      const material=front?meshes[index].material:meshes[index].userData.back.material;
+      material.map.dispose();material.map=paperTexture(index,front);
+      if(!front){material.map.repeat.x=-1;material.map.offset.x=1;}
+      material.needsUpdate=true;
+    }
+    function loadGroup(sources,collection,onReady){sources.forEach((item,index)=>{loadImage(item).then(image=>{if(disposed||!image)return;collection[index]=image;onReady(index);});});}
+    // The normal HTML image is also a recovery path if a hosted request arrives
+    // after its texture-load timeout. Its cover stays visible until WebGL is ready.
+    items.forEach((item,index)=>{
+      const image=item.querySelector('.miniapp-flip-front img');
+      const accept=()=>{if(disposed||!image.naturalWidth)return;if(index===2&&image.src.includes('herbal-skill-cover'))herbalCover=image;else coverImages[index]=image;refreshFace(index,true);};
+      image.addEventListener('load',accept);if(image.complete&&image.naturalWidth)accept();
+    });
+    loadGroup([miniProgram.cover,posterCollectionCover,creatorSkills[1].cover,xReader.cover].map(src=>({src})),coverImages,index=>refreshFace(index,true));
+    loadImage({src:creatorSkills[2].cover}).then(image=>{if(disposed||!image)return;herbalCover=image;refreshFace(2,true);});
+    loadGroup([posters[0],posters[4],posters[5]],photos,()=>refreshFace(1,false));
+    loadGroup(miniProgram.images,miniScreens,()=>refreshFace(0,false));
+    loadGroup(creatorSkills,skillImages,()=>refreshFace(2,false));
+    loadGroup(xReader.images.slice(0,2),xImages,()=>refreshFace(3,false));
     document.addEventListener('portfolio-language-change',refreshTextures);
     document.addEventListener('portfolio-skill-cover-change',()=>{meshes[2].material.map.dispose();meshes[2].material.map=paperTexture(2,true);meshes[2].material.needsUpdate=true;});
     const alignInitialSection=()=>{if(['#works','#about'].includes(location.hash)&&!new URL(location.href).searchParams.has('panel'))document.querySelector(location.hash)?.scrollIntoView({behavior:'instant',block:'start'});};
@@ -181,6 +194,8 @@ if(reel){
     function draw(now){
       if(!reel.isConnected){if(!disposed){renderer.dispose();meshes.forEach(m=>{m.geometry.dispose();m.material.map.dispose();m.material.dispose();if(m.userData.back){m.userData.back.material.map.dispose();m.userData.back.material.dispose();}});disposed=true;}return;}
       requestAnimationFrame(draw);
+      // Anchor navigation can enter the section before its first observer event.
+      if(!visible){const bounds=reel.getBoundingClientRect();visible=bounds.bottom>-160&&bounds.top<innerHeight+160;}
       if(!visible||document.hidden||document.querySelector('dialog[open]')){lastDraw=now;return;}
       if(now-lastDraw<25)return;const dt=Math.min(.05,(now-lastDraw)/1000);lastDraw=now;
       const running=reel.dataset.motion==='on',target=viewport.scrollLeft/Math.max(1,viewport.clientWidth),old=view;
@@ -209,9 +224,14 @@ if(reel){
       const x=view*spacing;camera.position.set(x+(running?mouseX*.2:0),-.4,10+(running?Math.min(1.1,Math.abs(speed)*3):0));camera.lookAt(x,.1,0);
       sun.position.x=x-6;sun.target.position.x=x;receiver.position.x=x;
       renderer.render(scene,camera);frames++;
+      const currentIndex=Number(reel.dataset.index)||0;
+      const frontReady=Boolean(currentIndex===2&&reel.dataset.skillCover==='herbal'?herbalCover:coverImages[currentIndex]);
+      const backReady=[miniScreens,photos,skillImages,xImages][currentIndex].every(Boolean);
+      const faceReady=frontReady&&(items[currentIndex].dataset.side!=='back'||backReady);
+      canvas.style.visibility=faceReady?'visible':'hidden';reel.dataset.engine=faceReady?'webgl':'loading';
       reel.dataset.frame=String(frames);reel.dataset.time=time.toFixed(2);reel.dataset.progress=view.toFixed(3);reel.dataset.settled=Math.abs(target-view)<.002&&Math.abs(target-Number(reel.dataset.index))<.002?'true':'false';
       const activeTurn=turns[Number(reel.dataset.index)||0];reel.dataset.flipAngle=activeTurn.angle.toFixed(3);reel.dataset.face=activeTurn.progress<1?'turning':(activeTurn.target?'back':'front');
     }
     requestAnimationFrame(draw);
-  }catch(error){canvas.remove();reel.dataset.engine='fallback';console.warn('The paper stage is unavailable; the original work entrances remain usable.');}
+  }catch(error){canvas.remove();reel.dataset.engine='fallback';reel.dataset.stageError=error?.message||'Renderer unavailable';console.warn('The paper stage is unavailable; the original work entrances remain usable.',error);}
 }
