@@ -1,0 +1,11 @@
+/* Quiet paper objects reuse the cream, blue and sage of the existing home. */
+.paper-object>img{display:block;width:100%;height:auto;pointer-events:none;user-select:none;transition:transform .25s ease}
+.station-projects{right:6%;width:24%;max-width:260px;--station-tilt:-3deg}
+.station-skills{left:4%;width:23%;max-width:245px;--station-tilt:3deg}
+.station-projects>.station-label,.station-skills>.station-label{margin-top:4px}
+.station-projects:hover .paper-object>img,.station-projects:focus-visible .paper-object>img{transform:translate(3px,-3px) rotate(-2deg)}
+.station-skills:hover .paper-object>img,.station-skills:focus-visible .paper-object>img{transform:rotate(2deg)}
+@media(min-width:651px) and (max-width:1000px){.station-projects{right:1%;width:27%}.station-skills{left:0;width:25%}}
+@media(max-width:650px){.station-projects,.station-skills{position:relative;left:auto;right:auto;width:75%;max-width:270px;margin:0}.station-projects{margin-right:3%}.station-skills{margin-left:5%}}
+#journey-stage[data-motion="off"] .paper-object>img{transition:none;transform:none}
+@media(prefers-reduced-motion:reduce){.paper-object>img{transition:none}.station-projects:hover .paper-object>img,.station-skills:hover .paper-object>img{transform:none}}

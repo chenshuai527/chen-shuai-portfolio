@@ -1,0 +1,22 @@
+/* The welcome note is a single, approachable paper object. */
+.page-home .welcome-card .message-underlay{inset:8px -7px 0 5px;transform:rotate(4deg);background:#7180ed;box-shadow:none}
+.page-home .welcome-card .flat-welcome-paper{padding:25px 30px 17px;background:#f4f1e6;color:#293b2d;clip-path:polygon(0 1%,20% .3%,45% 1%,71% .2%,100% 0,99.5% 28%,100% 55%,99.6% 100%,72% 99.4%,42% 100%,19% 99.4%,0 100%,.4% 65%);text-align:center}
+.welcome-card-head{display:flex;justify-content:space-between;align-items:center;gap:15px;text-align:left}
+.page-home .welcome-card .welcome-hello{font:italic 700 clamp(43px,4.5vw,61px)/.9 Georgia,serif;letter-spacing:-.08em;margin:0;color:#6878eb;transform:rotate(-4deg)}
+.page-home .welcome-card .message-eyebrow{font:7px/1.7 ui-monospace,Consolas,monospace;letter-spacing:.12em;color:#7e8675;text-align:right}
+.page-home .welcome-card h1{font:700 clamp(42px,4.3vw,62px)/1.16 "PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:-.06em;margin:25px 0 15px}
+.page-home .welcome-card .flat-highlight{padding:0 5px}
+.page-home .welcome-card .flat-highlight:before{inset:47% -2% 4%;background:#d4eaa8;transform:rotate(-2deg)}
+.page-home .welcome-card .flat-welcome-paper p{font-size:11px;line-height:1.8;letter-spacing:.02em;color:#526451}
+.welcome-spark{position:absolute;right:13%;top:32%;font:30px/1 Georgia,serif;color:#7180eb;transform:rotate(12deg)}
+.page-home .welcome-card .journey-tour{display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;min-height:43px;margin:20px 0 0;padding:12px 1px 0;border:0;border-top:1px solid #314a2e28;background:transparent;color:#344c35;transform:none;font-size:11px;cursor:pointer;text-align:left}
+.tour-paw{width:19px;height:19px;flex:0 0 19px;background:#718a61;mask:url('assets/paw-print.svg') center/contain no-repeat;-webkit-mask:url('assets/paw-print.svg') center/contain no-repeat;transform:rotate(-14deg)}
+.tour-label{flex:1;font-weight:500;letter-spacing:.04em}
+.page-home .welcome-card .tour-arrow{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#dbeab9;color:#344c35;font:19px/1 Georgia,serif;transition:transform .2s,background .2s}
+.page-home .welcome-card .journey-tour:hover .tour-arrow,.page-home .welcome-card .journey-tour:focus-visible .tour-arrow{transform:translate(2px,-2px);background:#c9df9b}
+.page-home .welcome-card .journey-tour:focus-visible{outline:2px solid #6379eb;outline-offset:4px}
+.lang-en .page-home .welcome-card h1{font:italic 700 clamp(38px,3.9vw,56px)/1.12 Georgia,serif;letter-spacing:-.055em}
+@media(max-width:1000px){.page-home .welcome-card .flat-welcome-paper{padding:22px 24px 16px}.page-home .welcome-card h1{font-size:clamp(40px,5.1vw,54px)}.welcome-spark{font-size:24px;right:11%}}
+@media(max-width:650px){.page-home .journey-stage{padding-top:405px}.page-home .welcome-card .flat-welcome-paper{padding:21px 23px 15px}.page-home .welcome-card .welcome-hello{font-size:46px}.page-home .welcome-card .message-eyebrow{font-size:6px}.page-home .welcome-card h1{font-size:45px;margin:21px 0 12px}.page-home .welcome-card .flat-welcome-paper p{font-size:10px}.page-home .welcome-card .journey-tour{margin-top:16px;padding-top:10px}.lang-en .page-home .welcome-card h1{font-size:40px}.welcome-spark{right:10%;top:31%}}
+@media(max-width:360px){.page-home .welcome-card .flat-welcome-paper{padding-left:18px;padding-right:18px}.page-home .welcome-card h1{font-size:40px}.page-home .welcome-card .welcome-hello{font-size:40px}.welcome-spark{right:7%;font-size:20px}.page-home .welcome-card .message-eyebrow{font-size:5.5px}}
+@media(prefers-reduced-motion:reduce){.page-home .welcome-card .tour-arrow{transition:none}}

@@ -1,0 +1,38 @@
+/* Shared sunlit photographic meadow, with independent grass blades above it. */
+html{background:#315222;--dark:#28451f}
+.site-background.site-background{background:#3c6027 url('assets/meadow-sunlit-long-grass.webp') center/cover no-repeat}
+.site-background.site-background:before{z-index:1;background:linear-gradient(180deg,#102a0e75 0%,#14350f2e 38%,#0e290c59 100%);opacity:1}
+.site-background.site-background:after{background:none;opacity:0}
+.meadow-wind-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.site-header,.site-footer,.journey-topline,.journey-index,.unified-section-top,.collage-work-note,.page-thread,.unified-ending{color:#f0f2df;text-shadow:0 1px 4px #163d0cc9}
+.site-header nav a{color:#f1f4df}.site-header nav a:hover,.site-header nav .active{color:#fffdf2}
+.language-toggle{background:#21451bc9;color:#f5f6e6;border-color:#d6e5b369}
+.station-label{width:max-content;max-width:100%;margin:11px auto 0;padding:4px 10px;background:#173a136b;border-radius:2px;text-shadow:0 1px 3px #0d2c08}
+.page-home .flat-photo-entry{margin-top:50px}
+.flat-photo-entry>span{width:max-content;max-width:100%;margin:6px auto 0;padding:4px 9px;background:#173a136b;border-radius:2px}
+.flat-photo-entry>small,#journey-status,.work-entry-note,.work-reel-hint{color:#f1f3dc;text-shadow:0 1px 4px #16380bd9}
+.work-reel .work-entry-label{padding:5px 12px;background:#183e15b0;border-radius:2px;color:#f7f6e8;text-shadow:0 1px 2px #0f290b}
+.work-reel-controls>button{background:#1c461cbf;border-color:#e6efcc9c}
+.work-reel-controls>button:hover:not(:disabled){background:#e3efbc;color:#2c4b25}
+.work-reel-position{color:#f2f6de;text-shadow:0 1px 4px #173b10}
+.work-reel-dots button>span{border-color:#f2f4c9}.work-reel-dots button[aria-pressed='true']>span{background:#eff3bd;border-color:#eff3bd}
+.journey-bottom{border-top-color:#edf0c945}.journey-progress>i{border-color:#dfe8b7a6}
+.page-panel{background:#193b1878;backdrop-filter:blur(5px);border-color:#d7e4b26b;box-shadow:5px 7px 0 #344f2980}
+.page-panel::backdrop{background:#112e1052;backdrop-filter:blur(2px)}
+.page-panel-bar{background:#21471de8;border-bottom-color:#d4e4ae55}
+body:has(.page-panel[open])>.site-shell,body:has(.poster-book-dialog[open])>.site-shell{visibility:hidden}
+.poster-book-dialog{background:#1537139c;border-color:#d5e6b369;backdrop-filter:blur(3px)}
+.poster-book-dialog::backdrop{background:#102c0e62;backdrop-filter:blur(2px)}
+.book-eyebrow,.book-description{color:#e0eaca}.book-navigation>button{border-color:#dce8c780;background:#284a2355}
+.poster-zoom{background:#102b0ee0}
+.photography-dialog{background:#173b14b8;border-color:#dce7c275;backdrop-filter:blur(3px)}
+.photography-dialog::backdrop{background:#102d105c;backdrop-filter:blur(2px)}
+.is-embedded,.is-embedded body{background:transparent}
+.is-embedded .meadow-wind-canvas{display:none}
+@media(max-width:650px){.station-label{font-size:12px}.work-reel .work-entry-label{padding:4px 9px}.page-panel{backdrop-filter:blur(3px)}}
+@media(min-width:1001px) and (max-height:950px){.page-home .journey-message{top:44%}.page-home .flat-photo-entry{top:32%}}
+
+/* Lower the whole welcome collage while reserving its space above the footer line. */
+.page-home .journey-message{translate:0 40px}
+.page-home .journey-stage{margin-bottom:40px}
+@media(max-width:650px){.page-home .journey-message{translate:0 28px}.page-home .journey-stage{padding-top:375px;margin-bottom:0}}

@@ -1,0 +1,26 @@
+/* A sheet stands behind the typewriter; the artwork appears on that sheet. */
+.page-home .poster-camera-station{--station-tilt:0deg}
+.poster-camera-station .camera-shutter{isolation:isolate}
+.poster-camera-station .poster-body-mask{aspect-ratio:auto;overflow:visible}
+.camera-station.poster-camera-station .camera-body{max-height:none;clip-path:none;filter:drop-shadow(2px 5px 3px #15301555)}
+.poster-camera-station .camera-visual{position:relative;z-index:2}
+.poster-camera-station .camera-shutter:after{display:none}
+.poster-camera-station .camera-print-preview{visibility:visible;left:23%;top:-86%;width:64%;height:110%;overflow:visible;z-index:1;transform:none;pointer-events:none}
+.poster-camera-station .camera-printed-photo{position:absolute;bottom:0;left:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;margin:0;padding:3px 3px 10px;transform:none;background:#f4f0e2;box-shadow:0 2px 4px #14230d5c,3px 6px 8px #14230d30}
+.poster-camera-station .camera-printed-photo>img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;background:transparent;opacity:0}
+.poster-camera-station[data-photo-ready="true"] .camera-printed-photo>img{opacity:1}
+.poster-camera-station .camera-print-caption{font-size:7px;overflow:hidden;text-overflow:ellipsis}
+.typewriter-paper-hint{position:absolute;top:20%;left:0;right:0;color:#aab69b;font-size:20px;line-height:1}
+.poster-camera-station[data-photo-ready="true"] .typewriter-paper-hint{visibility:hidden}
+.typewriter-keys{position:absolute;z-index:4;left:23%;top:60%;width:53%;height:18%;display:flex;flex-direction:column;gap:0}
+.typewriter-key-row{display:flex;flex:1;justify-content:center}
+.typewriter-key-row-2{width:90%;align-self:center}.typewriter-key-row-3{width:76%;align-self:center}
+.typewriter-key{display:block;flex:1;min-width:0;border:0;border-radius:4px;background:transparent;padding:0;color:transparent;font:600 clamp(3px,.32vw,5px)/1 Arial,sans-serif;cursor:pointer}
+.typewriter-key:hover{background:#d5e99166}
+.typewriter-key:focus-visible{outline:2px solid #d6ec99;outline-offset:0;background:#d5e99166}
+.typewriter-body:focus-visible{outline:2px dashed #f5efcf;outline-offset:4px}
+.camera-station.poster-camera-station[data-photo-ready="true"]>.camera-print-space{height:0}
+.poster-camera-station>.station-label{margin-top:0}
+@media(min-width:1001px){.page-home .station-posters{top:calc(18% + 105px);width:24%;max-width:265px}}
+@media(min-width:651px) and (max-width:1000px){.page-home .station-posters{top:calc(21% + 90px);width:28%;max-width:245px}}
+@media(max-width:650px){.page-home .poster-camera-station{margin-top:135px;width:70%;max-width:240px}.camera-station.poster-camera-station[data-photo-ready="true"]>.camera-print-space{height:0}}

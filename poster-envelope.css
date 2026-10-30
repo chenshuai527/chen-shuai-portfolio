@@ -1,0 +1,46 @@
+/* A sealed physical object hides the actual work until the existing book opens. */
+.poster-envelope{position:relative;display:block;container-type:inline-size;filter:drop-shadow(2px 5px 4px #10241438);color:#3e4b31}
+.envelope-asset{display:block;width:100%;height:auto;pointer-events:none}
+.envelope-inscription{position:absolute;left:16%;top:67%;width:70%;display:block;text-align:left;pointer-events:none}
+.envelope-inscription>strong{font:italic 15px/1.3 Georgia,serif;letter-spacing:.02em;font-weight:400}
+.envelope-invitation{position:absolute;left:16%;top:76.5%;font:11px/1.5 "KaiTi","STKaiti",serif;color:#48563c}
+@supports(font-size:1cqi){
+  .envelope-inscription>strong{font-size:5.5cqi}
+  .envelope-invitation{font-size:4.4cqi}
+}
+.lang-en .envelope-invitation{font-family:Georgia,serif;font-style:italic}
+@media(min-width:1001px){.page-home .station-posters{width:23%;max-width:255px;top:20%;--station-tilt:7deg}}
+@media(min-width:651px) and (max-width:1000px){.page-home .station-posters{width:27%;max-width:235px;top:23%;--station-tilt:7deg}}
+@media(max-width:650px){.page-home .station-posters{width:75%;max-width:275px;--station-tilt:7deg}}
+
+/* The reference-inspired carved frame holds an actual poster, never a placeholder. */
+.poster-gallery-frame{position:relative;display:block;container-type:inline-size;color:#eee7ce;filter:drop-shadow(3px 7px 5px #10241480)}
+.gallery-artwork{position:relative;display:block}
+.gallery-frame-image{position:relative;display:block;width:100%;height:auto;pointer-events:none;z-index:1}
+.gallery-cover{position:absolute;left:18.5%;top:18.6%;width:63%;height:63%;display:block;object-fit:contain;background:#e9e2cf;pointer-events:none}
+.gallery-frame-plaque{position:absolute;left:27%;bottom:9%;width:46%;padding:3px 2px;text-align:center;z-index:2;background:#d5bd8d;border:1px solid #6c5134;color:#3e2f20;font:7px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.12em;box-shadow:1px 2px 3px #160e0980}
+.gallery-frame-invitation{display:block;margin-top:8px;font:11px/1.5 "KaiTi","STKaiti",serif;color:#f0ead5;text-shadow:0 1px 3px #102714}
+.lang-en .gallery-frame-invitation{font-family:Georgia,serif;font-style:italic}
+
+/* The Polaroid material now opens the poster book. The former photography area stays empty. */
+.poster-camera{display:block;position:relative;filter:drop-shadow(3px 6px 5px #10241466)}
+.poster-camera-object{display:block;position:relative}
+.poster-camera-body{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
+.poster-camera-print{position:absolute;left:10%;top:55%;width:80%;display:block;padding:7px 7px 27px;background:#f8f3e4;border:1px solid #c8bfa6;box-shadow:3px 6px 9px #15231166;transform:translateY(8px) rotate(-4deg);transform-origin:top center}
+.poster-camera-print>img{display:block;width:100%;height:auto;aspect-ratio:1.35;object-fit:contain;background:#eee7d8}
+.poster-camera-print>small{position:absolute;left:4px;right:4px;bottom:6px;color:#514e3f;font:10px/1.4 "KaiTi","STKaiti",serif;white-space:nowrap;text-shadow:none}
+.poster-camera-clearance{display:block;padding-top:27%}
+@media(min-width:1001px){.page-home .station-posters{width:22%;max-width:235px;top:18%;--station-tilt:-5deg}}
+@media(min-width:651px) and (max-width:1000px){.page-home .station-posters{width:25%;max-width:220px;top:21%;--station-tilt:-5deg}}
+@media(max-width:650px){.page-home .station-posters{width:66%;max-width:220px;--station-tilt:-5deg}}
+
+/* The poster and photography cameras share the same print/retract treatment. */
+.poster-camera-station .camera-shutter{width:100%;margin-left:0}
+.poster-camera-station .poster-body-mask{display:block;aspect-ratio:1.3;overflow:hidden}
+.camera-station.poster-camera-station .camera-body{max-height:none;clip-path:polygon(0 0,100% 0,100% 76%,68% 76%,68% 63%,16% 59%,13% 71%,0 71%)}
+.poster-camera-station .camera-print-preview{left:15%;top:78%;width:54%;height:280px}
+.poster-camera-station .camera-printed-photo>img{object-fit:contain;background:#eee7d8}
+.camera-station.poster-camera-station[data-photo-ready="true"]>.camera-print-space{height:190px}
+.poster-camera-station>.station-label{position:relative;margin-top:-28px}
+.poster-camera-station .station-label>button{display:flex;align-items:center;gap:9px;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+@media(max-width:650px){.camera-station.poster-camera-station[data-photo-ready="true"]>.camera-print-space{height:150px}}

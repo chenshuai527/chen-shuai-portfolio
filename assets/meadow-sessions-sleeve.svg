@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="sky" x2=".2" y2="1"><stop stop-color="#8eb7b5"/><stop offset="1" stop-color="#d6d9ad"/></linearGradient>
+    <linearGradient id="hill" x2=".8" y2="1"><stop stop-color="#9cb373"/><stop offset="1" stop-color="#506b46"/></linearGradient>
+    <linearGradient id="river" x2=".8" y2="1"><stop stop-color="#87b8ae"/><stop offset="1" stop-color="#225e64"/></linearGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".12"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+    <clipPath id="window"><path d="M42 112h516v398H42z"/></clipPath>
+    <g id="flower"><path d="M0 1q-11-13-2-15Q7-15 3-3q13-8 14 1T4 4q8 11 0 14T-2 6q-13 7-15-1T-2 0" fill="#f4edd3"/><circle r="3" fill="#d4b05d"/></g>
+  </defs>
+  <g filter="url(#grain)">
+    <path fill="#e5e1c8" d="M0 0h600v600H0z"/>
+    <path fill="#bd5c3f" d="M0 0h12v600H0z"/>
+    <text x="43" y="48" fill="#365951" font-family="Georgia,serif" font-size="15" letter-spacing="4">CHEN SHUAI / VOL. 01</text>
+    <text x="41" y="91" fill="#31584f" font-family="Georgia,serif" font-style="italic" font-size="38">Letters from the meadow</text>
+    <g clip-path="url(#window)">
+      <path fill="url(#sky)" d="M42 112h516v398H42z"/>
+      <circle cx="437" cy="196" r="47" fill="#ce7954"/>
+      <path d="M0 221q66-30 120-10t82-10q-14-23-48-18-14-38-49-19-34-22-56 17-35-3-49 20M290 166q38-18 75-3t72-5q-12-18-33-14-9-20-29-9-23-18-42 8-27-3-43 23" fill="#f2edcf" opacity=".77"/>
+      <path d="M23 354q109-139 238-90 125 45 325-25v291H23z" fill="#a5b786"/>
+      <path d="M15 394q144-160 298-80 122 57 259-13v229H15z" fill="url(#hill)"/>
+      <path d="M15 483q118-122 237-71 125 57 320-21v139H15z" fill="#4d7251"/>
+      <path d="M295 302q-72 44 5 81 67 33-24 61-55 19-27 66h114q-73-42-5-62 92-35 5-74-91-36-40-72z" fill="url(#river)"/>
+      <g fill="none" stroke="#c2d3b9" stroke-width="1.5" opacity=".6"><path d="m302 321 13 2m-18 25 25 5m-2 42 18-1m-31 27 20-4m-33 42 21-1m-44 22 32 9m20 9 30 5"/></g>
+      <g fill="none" stroke="#c1cc92" stroke-width="2" stroke-linecap="round"><path d="M78 485q2-47-13-66m13 66q-4-24 18-47m2 50q0-24 10-34m42 21q6-53-11-72m11 72q-2-27 19-43m23 60q-4-39-16-52m16 52q-1-19 9-35m207 7q-4-46 14-67m-14 67q5-28-13-43m44 57q9-51 24-60m-24 60q4-29-8-45m72 42q-5-47 9-67m-9 67q1-28-17-42"/></g>
+      <g fill="#c5d29a" opacity=".75"><ellipse cx="94" cy="355" rx="2" ry="5" transform="rotate(25 94 355)"/><ellipse cx="126" cy="371" rx="2" ry="4"/><ellipse cx="153" cy="334" rx="2" ry="4"/><ellipse cx="236" cy="349" rx="2" ry="4"/><ellipse cx="380" cy="325" rx="2" ry="4"/><ellipse cx="464" cy="348" rx="2" ry="4"/><ellipse cx="499" cy="391" rx="2" ry="4"/></g>
+      <g><use href="#flower" transform="translate(94 433) scale(.65)"/><use href="#flower" transform="translate(164 467) scale(.8) rotate(17)"/><use href="#flower" transform="translate(214 414) scale(.45)"/><use href="#flower" transform="translate(126 392) scale(.4)"/><use href="#flower" transform="translate(419 437) scale(.6)"/><use href="#flower" transform="translate(482 481) scale(.85) rotate(-13)"/><use href="#flower" transform="translate(514 412) scale(.5)"/><use href="#flower" transform="translate(383 375) scale(.4)"/></g>
+      <path d="M60 508q37-18 71-8m301-4q50-13 105-7" stroke="#d5d9a9" stroke-width="1.5" fill="none"/>
+    </g>
+    <path d="M43 528h515" stroke="#7b8c71" stroke-width=".7"/>
+    <text x="43" y="559" fill="#31584f" font-family="KaiTi,STKaiti,serif" font-size="24" letter-spacing="6">草地来信</text>
+    <text x="43" y="581" fill="#677960" font-family="monospace" font-size="8" letter-spacing="2">A LITTLE MUSIC. A LITTLE MORE TIME.</text>
+    <text x="495" y="562" fill="#31584f" font-family="Georgia,serif" font-size="14">33⅓</text>
+    <text x="502" y="579" fill="#677960" font-family="monospace" font-size="8" letter-spacing="1">STEREO</text>
+    <path d="M16 10h575v580H16z" stroke="#fff8df" stroke-opacity=".3" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+.meadow-radio{position:relative;left:50%;width:100vw;margin:55px 0 0;transform:translateX(-50%);min-height:90svh;color:#f3f0df;isolation:isolate;scroll-margin-top:24px}
+.meadow-radio *{box-sizing:border-box}
+.radio-heading{display:flex;justify-content:space-between;align-items:center;padding:28px 5vw 0;font:10px/1.4 ui-monospace,monospace;letter-spacing:.14em;color:#f3f2dbc9;text-shadow:0 1px 5px #16330d}
+.radio-heading a{color:inherit;text-decoration:none;letter-spacing:.03em;font-size:11px;padding:8px 0;border-bottom:1px solid #dce2bd55}
+.radio-heading a:hover{color:#fff}
+.radio-desk{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;max-width:1550px;margin:auto;min-height:calc(90svh - 80px);padding:20px 5vw 60px;gap:5vw}
+.radio-art{min-width:0;position:relative}
+.radio-turntable{position:relative;width:100%;max-width:680px;aspect-ratio:1;margin:auto;filter:drop-shadow(0 20px 15px #10230c30)}
+.radio-sleeve{position:absolute;left:0;top:9%;width:62%;aspect-ratio:1;transform:rotate(-8deg);background:#e5e1c8;box-shadow:1px 2px 0 #d1cfb8,2px 4px 0 #a7b094,0 14px 24px #152d164d}
+.radio-sleeve img{display:block;width:100%;height:100%;object-fit:cover}
+.radio-sleeve:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 1px 1px #fffce180,inset -5px 0 6px #243b292b;pointer-events:none}
+.sleeve-edge{position:absolute;right:-2px;top:2px;bottom:2px;width:2px;background:#f0e8cb}
+.radio-record{position:absolute;left:23%;top:21%;width:74%;aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle at center,#181e1c 0 1px,#2c3531 1.2px 1.6px,#131b18 1.9px 2.7px);border:3px solid #141a17;box-shadow:inset 0 0 0 2px #586359,inset 0 0 0 5px #111a16,0 0 0 1px #b5bea466,0 5px 0 #172118,0 17px 25px #0b1c0b66;animation:radio-spin 14s linear infinite paused}
+.radio-record:before{content:'';position:absolute;inset:1%;border-radius:inherit;background:conic-gradient(from 35deg,transparent 0 12%,#d9e3cd24 15%,transparent 21% 42%,#c4d6b920 47%,transparent 52% 70%,#eaf2df1c 75%,transparent 80%);pointer-events:none}
+.radio-record:after{content:'';position:absolute;inset:22%;border:1px solid #bcc7ac26;border-radius:50%;pointer-events:none}
+.record-label{position:absolute;inset:32%;border-radius:50%;background:radial-gradient(circle at 30% 25%,#417b76,#1f5557);color:#eee8cd;box-shadow:0 0 0 1px #e3ddbc,0 0 0 4px #14201a,0 0 0 5px #65715d66;text-align:center;overflow:hidden}
+.record-label:after{content:'';position:absolute;inset:5%;border:1px solid #d6dfbe55;border-radius:50%}
+.record-label span,.record-label small{position:absolute;left:0;width:100%;font:clamp(4px,.42vw,7px)/1.2 ui-monospace,monospace;letter-spacing:.08em}
+.record-label span{top:12%}.record-label small{bottom:12%}
+.record-label strong{position:absolute;left:0;top:23%;width:100%;font:normal clamp(12px,1.4vw,22px)/1.1 'KaiTi','STKaiti',serif;letter-spacing:.12em}
+.label-pond{position:absolute;left:10%;top:31%;width:80%;height:55%;overflow:visible}
+.record-spindle{position:absolute;left:50%;top:50%;width:1.8%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 35% 25%,#f8f8e9 0 15%,#b9bead 30%,#5c6558 65%,#dedfcd 85%);box-shadow:1px 2px 3px #15201870;z-index:1}
+.radio-tonearm{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.record-arm{transform:rotate(-23deg);transform-origin:0 0;transition:transform 1s cubic-bezier(.3,.1,.25,1)}
+.arm-shadow{transform:translate(.5px,.8px)}
+.is-playing .record-arm{transform:rotate(-3deg)}
+.is-playing .radio-record{animation-play-state:running}
+.radio-art-caption{position:absolute;left:0;bottom:2%;font:9px/1.6 ui-monospace,monospace;letter-spacing:.12em;color:#eef0d5bb;text-shadow:0 1px 4px #17330a}
+.radio-content{min-width:0;max-width:520px;padding:35px 0;text-shadow:0 2px 8px #122e0dcc}
+.radio-kicker{font:10px/1.5 ui-monospace,monospace;letter-spacing:.15em;color:#e2e8c6;display:flex;align-items:center;gap:10px;margin:0}
+.radio-kicker i{width:6px;height:6px;border-radius:50%;background:#d7b58c;box-shadow:0 0 9px #ddbf8670}
+.is-playing .radio-kicker i{background:#d4e79f;box-shadow:0 0 12px #d5e6a3aa}
+.radio-content h2{font:400 clamp(34px,4.1vw,66px)/1.28 'KaiTi','STKaiti',serif;letter-spacing:.015em;margin:26px 0 20px;color:#fff9e5}
+.radio-content h2 em{font-style:normal;color:#dbe9b1}
+.radio-note{max-width:350px;font:15px/1.95 'KaiTi','STKaiti',serif;color:#edf0d7;margin:0 0 14px}
+.radio-score{display:block;width:100%;height:auto;max-height:112px;margin:0 0 8px;color:#f0ebce;overflow:visible;filter:drop-shadow(0 2px 4px #16300b66)}
+.score-staff{opacity:.3}
+.score-note{transform:translateY(var(--note-y,0px));opacity:var(--note-opacity,.72);transition:transform .14s ease-out,opacity .2s;will-change:transform}
+.score-note-warm{color:#e9c28b}
+.is-playing .score-staff{opacity:.48}
+.meadow-radio:not(.is-playing) .score-note{transition:transform .6s ease,opacity .4s}
+.radio-now{display:flex;align-items:center;gap:18px;border-top:1px solid #e4e8c458;padding:21px 0 23px}
+.radio-now>span:first-child{font:9px/1.4 ui-monospace,monospace;letter-spacing:.08em;color:#dce4c3;flex:none}
+.radio-now>div{display:flex;flex-direction:column;gap:5px}
+.radio-now strong{font:21px/1.3 'KaiTi','STKaiti',serif;letter-spacing:.08em;color:#fff9e7}
+.radio-now small{font:10px/1.4 ui-monospace,monospace;color:#dae3c4}
+.radio-signal{display:flex;align-items:center;gap:3px;height:21px;margin-left:auto;flex:none}
+.radio-signal i{width:2px;height:6px;border-radius:2px;background:#dbe5bb}
+.radio-signal i:nth-child(2){height:15px;animation-delay:-.3s!important}.radio-signal i:nth-child(3){height:10px;animation-delay:-.6s!important}.radio-signal i:nth-child(4){height:19px;animation-delay:-.2s!important}
+.is-playing .radio-signal i{animation:radio-meter 1s ease-in-out infinite alternate}
+.radio-controls{display:flex;align-items:center;gap:18px}
+.radio-controls button{display:grid;place-items:center;flex:none;cursor:pointer;color:#f3f3de;transition:background .2s,color .2s;box-shadow:0 2px 8px #16300922}
+.radio-play{width:54px;height:54px;border-radius:50%;background:#f0ecd8;color:#2a442b!important;border:1px solid #fffce6;box-shadow:0 5px 14px #10240c44!important}
+.radio-play svg{width:22px;height:22px;fill:currentColor}.pause-shape{display:none}.is-playing .play-shape{display:none}.is-playing .pause-shape{display:block}
+.radio-mute{width:36px;height:36px;border-radius:50%;background:#26401e52;border:1px solid #eff1ce6b}
+.radio-mute svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.sound-cross{display:none}.radio-mute[aria-pressed=true] .sound-waves{display:none}.radio-mute[aria-pressed=true] .sound-cross{display:block}
+.radio-controls button:hover{background:#dce8b9;color:#24402b}.radio-controls button:focus-visible,.radio-timeline input:focus-visible,.radio-heading a:focus-visible{outline:2px solid #fff4cb;outline-offset:5px}
+.radio-timeline{flex:1;min-width:0;padding-top:13px}
+.radio-timeline input{display:block;width:100%;height:18px;margin:0;appearance:none;cursor:pointer;background:transparent;border:0;--progress:0%}
+.radio-timeline input::-webkit-slider-runnable-track{height:3px;border-radius:5px;background:linear-gradient(to right,#f1efcd var(--progress),#c5d2ad77 var(--progress))}
+.radio-timeline input::-webkit-slider-thumb{appearance:none;width:9px;height:9px;margin-top:-3px;border-radius:50%;background:#f8f3d8;box-shadow:0 0 0 3px #ebedc522}
+.radio-timeline input::-moz-range-track{height:3px;background:#c5d2ad77}.radio-timeline input::-moz-range-progress{background:#f1efcd;height:3px}.radio-timeline input::-moz-range-thumb{width:9px;height:9px;border:0;border-radius:50%;background:#f8f3d8}
+.radio-timeline>div{display:flex;justify-content:space-between;color:#eef0d7;font:9px/1 ui-monospace,monospace;margin-top:3px}
+.radio-hint{font:11px/1.6 'KaiTi','STKaiti',serif;color:#dce7c1;margin:18px 0 0;min-height:18px}
+.radio-signoff{font:14px/1.6 'KaiTi','STKaiti',serif;color:#f0f1d7;margin:38px 0 0;letter-spacing:.12em}
+@keyframes radio-spin{to{transform:rotate(360deg)}}
+@keyframes radio-meter{from{transform:scaleY(.4)}to{transform:scaleY(1.1)}}
+@media(min-width:1500px){.radio-desk{gap:90px;padding-left:75px;padding-right:75px}}
+@media(max-width:760px){.meadow-radio{margin-top:30px;min-height:100svh}.radio-heading{padding:20px 7vw 0;font-size:8px}.radio-heading a{font-size:10px}.radio-desk{grid-template-columns:1fr;gap:0;padding:15px 8vw 45px;min-height:auto}.radio-art{width:100%;max-width:470px;margin:auto}.radio-turntable{max-width:440px}.radio-art-caption{font-size:7px;bottom:0}.record-label span,.record-label small{font-size:5px}.record-label strong{font-size:clamp(12px,3.8vw,21px)}.radio-content{max-width:470px;width:100%;margin:auto;padding:28px 0 0}.radio-kicker{font-size:8px}.radio-content h2{font-size:40px;margin:18px 0 14px}.radio-note{font-size:14px;margin-bottom:25px;max-width:330px}.radio-now{padding:18px 0 20px;gap:16px}.radio-now strong{font-size:19px}.radio-controls{gap:15px}.radio-play{width:48px;height:48px}.radio-signoff{margin-top:25px}}
+/* The record's rotation is explicitly requested and starts only after Play. */
+@media(prefers-reduced-motion:reduce){.radio-signal i{animation:none!important}.record-arm{transition:none}}

@@ -1,0 +1,42 @@
+.paper-runner{position:absolute;left:0;top:0;width:112px;height:112px;z-index:8;pointer-events:none;will-change:transform;transform:translate(-140px,-140px);--runner-flip:1;opacity:0;transition:opacity .25s ease}
+.paper-runner.is-guiding{opacity:1}
+.runner-figure{display:block;position:absolute;inset:0;transform:scaleX(var(--runner-flip));transform-origin:50% 90%}
+.cat-sprite{display:block;position:absolute;inset:0;background:url("assets/cat-idle.webp") 0 0/100% 100% no-repeat;filter:drop-shadow(1px 2px 1px #08120a55);transform-origin:50% 90%}
+.runner-shadow{position:absolute;left:22%;bottom:0;width:61%;height:7px;border-radius:50%;background:#07160d55;filter:blur(2px)}
+.runner-speech{position:absolute;left:89px;top:9px;display:block;background:#d5e895;color:#273a24;padding:5px 8px;font:9px/1.3 "KaiTi","STKaiti",serif;white-space:nowrap;transform:rotate(-6deg);box-shadow:2px 3px 4px #0004}
+.paper-runner.is-running .cat-sprite{background-image:url("assets/cat-run-sprite.webp");background-size:400% 100%;animation:cat-stride .56s steps(4) infinite,cat-bound .28s ease-in-out infinite alternate}
+.paper-runner.is-running .runner-speech{opacity:0}
+.paper-runner.is-celebrating .cat-sprite{animation:cat-arrive .45s ease-out}
+@keyframes cat-stride{from{background-position:0 0}to{background-position:133.333333% 0}}
+@keyframes cat-bound{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-4px) rotate(1deg)}}
+@keyframes cat-arrive{0%,100%{transform:translateY(0)}40%{transform:translateY(-8px) rotate(-3deg)}}
+@media(max-width:650px){.paper-runner{width:94px;height:94px}}
+#journey-stage[data-motion="off"] .cat-sprite{animation:none!important}
+.journey-particles{position:absolute;inset:0;pointer-events:none;z-index:12;overflow:visible}
+.journey-particle{position:absolute;left:0;top:0;display:block;width:7px;height:12px;background:#d5e895;will-change:transform,opacity}
+.journey-tools-dialog{width:min(520px,calc(100% - 40px));border:1px solid #9fab8f;background:#e8e6d7;color:#2d3c2b;padding:43px 31px 31px;box-shadow:10px 12px 0 #6879e6}
+.journey-tools-dialog::backdrop{background:#08110de0;backdrop-filter:blur(4px)}
+.journey-tools-close{position:absolute;right:15px;top:8px;background:none;border:0;color:#516145;font-size:11px;min-height:36px;cursor:pointer}
+.journey-tools-dialog .eyebrow{color:#82906d;font-size:8px}
+.journey-tools-dialog h2{font-size:25px;font-weight:500;margin:13px 0}
+.journey-tools-note{font-size:11px;line-height:1.8;color:#69795d}
+.journey-tool-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:24px}
+.journey-tool-choices button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;padding:20px 6px 16px;background:#ced9bb;border:1px solid #96a884;color:#253a25;box-shadow:3px 4px 0 #a2b08d;cursor:pointer;font:13px/1.4 Georgia,serif}
+.journey-tool-choices button:nth-child(2){background:#e2b69c;border-color:#b58d70;box-shadow:3px 4px 0 #bc987d}
+.journey-tool-choices button:nth-child(3){background:#d9dcd0;border-color:#a3ae98;box-shadow:3px 4px 0 #b0baa7}
+.journey-tool-choices button>span{font:30px/1 ui-monospace,Consolas,monospace;letter-spacing:-.13em}
+
+/* Alternate little paws; there are no visible route strokes or numbered nodes. */
+#journey-stage .journey-path{stroke:none;fill:none;visibility:hidden}
+.journey-paw{opacity:.38;transition:opacity .3s ease;filter:drop-shadow(0 1px 1px #092a15b3)}
+.journey-paw.is-pressed{opacity:.9}
+.journey-paw-mark{transform-box:fill-box;transform-origin:center}
+#journey-stage[data-motion='on'] .journey-paw.is-pressed .journey-paw-mark{animation:paw-press .38s ease-out both}
+@keyframes paw-press{0%{transform:scale(.55)}65%{transform:scale(1.12)}100%{transform:scale(1)}}
+#journey-stage[data-motion='off'] .journey-paw{transition:none}
+
+@keyframes runner-swing{from{transform:rotate(-37deg)}to{transform:rotate(39deg)}}
+@keyframes runner-bob{from{transform:translateY(0)}to{transform:translateY(-2px)}}
+@keyframes journey-object-pop{0%{transform:scale(1)}35%{transform:scale(1.1) rotate(-3deg)}70%{transform:scale(.98) rotate(1deg)}100%{transform:scale(1)}}
+
+#journey-stage[data-motion="off"] .paper-runner{transition:none}

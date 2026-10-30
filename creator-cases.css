@@ -1,0 +1,21 @@
+.creator-repo-link{display:inline-flex;align-items:center;min-height:38px;font-size:12px;color:#4e6d39;border-bottom:1px solid #b1c58c;padding:5px 0;margin:0 0 23px}
+.creator-repo-link:hover{color:#566dd3;border-color:#7688e1}.creator-repo-link:focus-visible{outline:2px solid #7187e3;outline-offset:4px}
+.creator-link-row{display:flex;flex-wrap:wrap;gap:25px}
+.creator-overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:30px 0 10px}
+.creator-overview-grid>a{display:flex;flex-direction:column;min-width:0;color:#405d32;padding:0 0 13px;border-bottom:1px solid #c7d3b6}
+.creator-overview-grid img{display:block;width:100%;height:185px;object-fit:contain;background:#e8eddb;margin-bottom:17px}
+.creator-overview-grid strong{font:500 17px/1.7 "KaiTi","STKaiti",serif}
+.creator-overview-grid small{font:8px/1.7 ui-monospace,Consolas,monospace;color:#788569;overflow-wrap:anywhere;margin-top:7px}
+.creator-figure{margin:10px 0 28px}
+.creator-figure>button{display:block;width:100%;padding:7px;background:#fdfcf4;border:1px solid #d8dfc9;cursor:zoom-in;box-shadow:2px 3px 0 #bcc8ac66}
+.creator-figure img{display:block;width:100%;height:auto;max-height:580px;object-fit:contain}
+.creator-figure figcaption{color:#899478;font:10px/1.8 "KaiTi","STKaiti",serif;margin-top:12px}
+.creator-image-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;align-items:start}
+.creator-image-pair .creator-figure img{height:240px;object-fit:contain}
+.creator-case-paper .case-chapter-number{overflow-wrap:anywhere}
+.creator-skill-cover{display:flex;align-items:center;gap:9px;width:275px}
+.creator-skill-cover img{display:block;width:31%;height:225px;object-fit:contain;background:#eef0df;padding:4px;box-shadow:2px 4px 0 #5c744c44}
+.creator-x-cover{display:block;width:270px;background:#f6f4e9;padding:7px;box-shadow:3px 4px 0 #637be470;transform:rotate(4deg)}
+.creator-x-cover img{display:block;width:100%;height:245px;object-fit:contain}
+@media(max-width:900px){.creator-overview-grid{gap:12px}.creator-overview-grid img{height:145px}.creator-overview-grid strong{font-size:14px}}
+@media(max-width:650px){.creator-overview-grid{grid-template-columns:1fr;gap:24px}.creator-overview-grid img{height:220px}.creator-overview-grid strong{font-size:20px}.creator-overview-grid small{font-size:9px}.creator-figure img{max-height:440px}.creator-image-pair{grid-template-columns:1fr}.creator-image-pair .creator-figure img{height:auto;max-height:400px}}

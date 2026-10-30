@@ -1,0 +1,40 @@
+/* Real raster scrapbook materials; portrait and text remain the user's editable content. */
+.intro-scrapbook{position:relative;display:block;isolation:isolate;color:#2e3528;filter:drop-shadow(2px 6px 4px #16200c38);container-type:inline-size}
+.intro-book-base{display:block;width:100%;height:auto;pointer-events:none}
+.intro-photo-back{position:absolute;left:23%;top:15%;width:68%;height:60%;background:#985c48;transform:rotate(-8deg);box-shadow:1px 2px 3px #3d32132b}
+.intro-photo-underlay{position:absolute;left:30%;top:17%;width:63%;height:58%;background:#bcc58d;transform:rotate(7deg);box-shadow:1px 2px 3px #3d32132b}
+.page-home .station-intro .station-label{margin-top:-7px}
+.intro-book-photo{position:absolute;left:29%;top:18%;width:62%;height:55%;display:flex;align-items:center;justify-content:center;transform:rotate(-2deg);pointer-events:none;background:#bbb1a2;box-shadow:1px 2px 5px #302b2740;padding:4%}
+.intro-book-photo>img{display:block;width:100%;height:100%;object-fit:contain}
+.intro-book-note{position:absolute;left:18%;top:70%;width:79%;height:21%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:rotate(-3deg);text-align:center;background:#f1ead6;box-shadow:1px 3px 4px #5f553c40;clip-path:polygon(2% 0,99% 3%,98% 20%,100% 39%,98% 58%,100% 77%,97% 100%,0 96%,2% 75%,0 56%,2% 35%,0 14%)}
+.intro-photo-tape{position:absolute;left:48%;top:14%;width:29%;height:7%;background:#d8cda5b8;transform:rotate(7deg);clip-path:polygon(3% 0,97% 3%,100% 93%,0 100%)}
+.intro-speech{position:absolute;right:-12%;top:8%;width:43%;padding:7% 4% 5%;border:2px solid #5c412d;border-radius:18% 23% 16% 22%;background:#f4ddac;color:#513d2e;transform:rotate(9deg);font:600 12px/1.4 "KaiTi","STKaiti",serif;text-align:center;box-shadow:1px 2px 0 #6f52352b}
+.intro-speech:after{content:"";position:absolute;left:16%;bottom:-12px;width:12px;height:13px;background:#f4ddac;clip-path:polygon(0 0,100% 0,0 100%)}
+.intro-speech small{display:block;margin-top:4px;font:5px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.07em}
+.intro-margin-note{position:absolute;left:15%;top:37%;color:#f4ebcf;text-shadow:0 1px 3px #392d19;font:6px/1.3 ui-monospace,Consolas,monospace;transform:rotate(-4deg);text-align:left;letter-spacing:.03em}
+.intro-margin-note>span{display:block;color:#ead184;font:34px/1 "KaiTi","STKaiti",serif;margin:2px 0 0 3px}
+.intro-book-note strong{font:600 20px/1.25 "KaiTi","STKaiti",serif;letter-spacing:.14em}
+.intro-book-note>span{font:7px/1.6 "KaiTi","STKaiti",serif;white-space:nowrap;letter-spacing:.03em}
+.intro-book-caption{position:absolute;left:27%;top:91%;width:66%;font:6px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.08em;text-align:center;color:#736c52}
+.lang-en .intro-book-note strong{font-size:12px;letter-spacing:.025em}
+.lang-en .intro-book-note>span{font-size:6px;white-space:normal;max-width:95%;line-height:1.4}
+@supports(font-size:1cqi){
+  .intro-book-note strong{font-size:9cqi}
+  .intro-book-note>span{font-size:3.15cqi}
+  .intro-book-caption{font-size:2.65cqi}
+  .lang-en .intro-book-note strong{font-size:5.6cqi}
+  .lang-en .intro-book-note>span{font-size:2.8cqi}
+}
+@media(min-width:1001px){
+  .page-home .station-intro{left:2%;top:0;width:20%;max-width:220px;--station-tilt:-5deg}
+  .page-home .flat-photo-entry{left:1%;top:39%;width:18%;max-width:190px}
+  .page-home .flat-photo-entry>img{max-height:215px}
+}
+@media(min-width:651px) and (max-width:1000px){
+  .page-home .station-intro{left:0;top:1.5%;width:29%;max-width:225px;--station-tilt:-5deg}
+  .page-home .flat-photo-entry{left:1%;top:43%;width:26%;max-width:215px}
+  .page-home .flat-photo-entry>img{max-height:215px}
+}
+@media(max-width:650px){
+  .page-home .station-intro{width:77%;max-width:270px;--station-tilt:-5deg}
+}

@@ -1,0 +1,61 @@
+/* A paper lamp and quiet links continue the meadow's green / cream palette. */
+.personal-contact{padding:40px 0 24px;min-height:100svh;display:flex;flex-direction:column;justify-content:center;scroll-margin-top:18px;color:#f4f0de}
+.contact-section-top{flex:none}
+.contact-stage{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:15px;min-height:610px;padding:43px 46px 66px;margin:22px 0 0;border:1px solid #dce7c969;border-radius:8px 24px 8px 8px;background:#254a27ed;box-shadow:0 16px 42px #17320f33;overflow:hidden}
+.contact-letter{position:relative;z-index:3;min-width:0}
+.contact-eyebrow{font:8px/1.7 ui-monospace,Consolas,monospace;letter-spacing:.14em;color:#bbc8a2;margin:0 0 16px}
+.contact-letter h2{font:400 clamp(35px,4.1vw,57px)/1.27 'Songti SC','SimSun',serif;letter-spacing:.035em;margin:0;color:#f5f0dc}
+.contact-intro{font-size:12px;line-height:1.9;color:#c7d1b3;margin:16px 0 22px}
+.contact-links{max-width:565px}
+.contact-row{position:relative;display:grid;grid-template-columns:23px minmax(0,1fr) 42px;align-items:center;gap:10px;min-height:57px;border-bottom:1px solid #d4e2b52c;color:#e8ebd6;text-align:left}
+.contact-row-number{font:8px/1.5 ui-monospace,Consolas,monospace;color:#99ae83}
+.contact-primary{display:grid;grid-template-columns:110px minmax(0,1fr);align-items:center;min-width:0;gap:9px;min-height:52px}
+.contact-channel-name{width:fit-content;max-width:100%;padding:5px 7px;margin-left:-7px;font:400 22px/1.2 'Songti SC','SimSun',serif;border-radius:44% 37% 42% 39%;transition:color .18s,background-color .18s}
+.contact-handle{font:10px/1.7 ui-monospace,Consolas,'Microsoft YaHei',monospace;letter-spacing:0;color:#c9d5b7;overflow-wrap:anywhere;user-select:text}
+.contact-row-action,.contact-copy{font:9px/1.5 'Microsoft YaHei',sans-serif;color:#bed09d;text-align:center}
+.contact-copy{padding:8px 4px;min-height:36px;border:1px solid #cbdcad42;background:#254a2755;border-radius:4px;cursor:pointer}
+.contact-copy:hover,.contact-copy[data-copy-state='copied']{background:#e5ebd0;color:#2b4d2b;border-color:#e5ebd0}
+.contact-row.is-lit .contact-channel-name{background:#eeedda;color:#2d4d29}.contact-row.is-lit .contact-handle{color:#f6f0d7}.contact-row.is-lit .contact-row-number{color:#d4e5b4}
+.contact-row:focus-visible,.contact-primary:focus-visible,.contact-copy:focus-visible,.contact-lamp-switch:focus-visible{outline:2px solid #d7e99b;outline-offset:5px;border-radius:3px}
+.contact-status{min-height:16px;min-width:0;font-size:10px;line-height:1.6;color:#d8e7b3;margin-top:13px}
+.contact-light-scene{position:relative;z-index:2;min-width:0;align-self:stretch;min-height:440px;pointer-events:none}
+.contact-lamp-art{position:absolute;display:block;width:119%;height:112%;object-fit:contain;right:-26px;bottom:-12px;transform:rotate(var(--lamp-tilt,0deg));transform-origin:72% 87%;transition:transform .3s ease;filter:drop-shadow(0 9px 12px #102d1620);user-select:none}
+.contact-lamp-note{position:absolute;z-index:3;left:18px;top:2px;max-width:220px;color:#dce4c7;font:17px/1.8 'KaiTi','STKaiti',serif;transform:rotate(-5deg)}
+.contact-lamp-switch{position:absolute;z-index:4;right:4px;bottom:0;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #d4e0b852;border-radius:20px;background:#294d2b;color:#dde4c7;font-size:9px;line-height:1.5;min-height:34px;cursor:pointer;pointer-events:auto}
+.contact-switch-dot{display:block;width:5px;height:5px;border-radius:50%;background:#e1e9ba}.contact-stage[data-light='off'] .contact-switch-dot{background:#809673}.contact-stage[data-light='off'] .contact-lamp-art{filter:brightness(.82) drop-shadow(0 9px 12px #102d1620)}
+.contact-beam{position:absolute;z-index:1;left:0;top:0;width:650px;height:280px;object-fit:fill;transform-origin:100% 50%;opacity:.2;mix-blend-mode:screen;pointer-events:none;transition:opacity .2s;user-select:none}
+.contact-stage[data-light='off'] .contact-beam{opacity:0}
+.contact-stage-footer{position:absolute;z-index:3;bottom:21px;left:46px;right:46px;display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:15px;border-top:1px solid #d4e2b52b;color:#a8bb93;font:7px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.1em}
+.contact-stage-footer>span:last-child{font:13px/1.5 'KaiTi','STKaiti',serif;letter-spacing:.03em;color:#d1ddbd}
+.personal-contact+.unified-ending{padding-top:20px;padding-bottom:32px;gap:12px}.personal-contact+.unified-ending>span{display:none}.personal-contact+.unified-ending>p{font-size:16px}
+.page-contact .contact-standalone-main{padding-top:10px}.page-contact .personal-contact{padding-top:0;min-height:0;padding-bottom:25px}.page-contact .personal-contact .contact-section-top>a{display:none}
+html.is-embedded .page-contact .site-shell{max-width:none;padding:0 24px}html.is-embedded .page-contact .contact-standalone-main{padding-top:0}
+.lang-en .contact-letter h2{font-family:Georgia,serif;letter-spacing:-.035em}.lang-en .contact-channel-name{font:18px/1.3 Georgia,serif}.lang-en .contact-intro{font-size:11px}.lang-en .contact-lamp-note{font:italic 16px/1.8 Georgia,serif}
+body:has(#journey-stage[data-motion='off']) .contact-stage *{transition:none!important}body:has(#journey-stage[data-motion='off']) .contact-lamp-art{transform:none}
+@media(min-width:901px) and (max-height:850px){.personal-contact{padding-top:20px;padding-bottom:18px}.contact-section-top{padding-block:13px}.contact-stage{min-height:520px;padding:28px 38px 56px;margin-top:15px}.contact-letter h2{font-size:39px}.contact-eyebrow{font-size:7px;margin-bottom:9px}.contact-intro{font-size:11px;margin:10px 0 14px}.contact-row{min-height:51px}.contact-primary{min-height:47px}.contact-channel-name{font-size:21px}.contact-light-scene{min-height:400px}.contact-status{margin-top:8px}.contact-stage-footer{left:38px;right:38px;bottom:17px;padding-top:12px}}
+@media(max-width:1000px){.contact-stage{padding-inline:31px;gap:10px;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}.contact-primary{grid-template-columns:95px minmax(0,1fr);gap:5px}.contact-channel-name{font-size:20px}.contact-handle{font-size:9px}.contact-letter h2{font-size:43px}.contact-stage-footer{left:31px;right:31px}.contact-lamp-note{font-size:15px;left:8px}.lang-en .contact-channel-name{font-size:16px}}
+@media(max-width:760px){.personal-contact{padding-top:24px}.contact-stage{min-height:580px;padding:32px 27px 60px;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:0}.contact-letter h2{font-size:38px}.contact-eyebrow{font-size:6px;max-width:200px}.contact-intro{font-size:11px;max-width:250px}.contact-primary{grid-template-columns:1fr;gap:4px;padding:10px 0}.contact-channel-name{font-size:21px}.contact-handle{font-size:10px}.contact-row{grid-template-columns:18px minmax(0,1fr) 38px;gap:5px}.contact-light-scene{min-height:440px}.contact-lamp-art{width:175%;height:90%;right:-60px;bottom:-2px}.contact-lamp-note{top:12px;left:14px;font-size:14px;max-width:130px}.contact-stage-footer{left:27px;right:27px}.contact-lamp-switch{right:-7px;bottom:3px;padding:7px 9px;font-size:8px}.lang-en .contact-channel-name{font-size:18px}}
+@media(max-width:520px){.personal-contact{padding-top:25px;min-height:0}.contact-section-top{gap:10px}.contact-section-top>span{font-size:7px}.contact-stage{display:block;min-height:0;padding:30px 23px 58px;margin-top:19px;border-radius:7px 19px 7px 7px}.contact-letter{width:100%}.contact-letter h2{font-size:37px;position:relative;z-index:4;max-width:240px}.contact-eyebrow{font-size:6px;letter-spacing:.09em;max-width:220px;margin-bottom:14px}.contact-intro{font-size:10px;line-height:1.8;margin:14px 0 20px;max-width:230px}.contact-primary{grid-template-columns:91px minmax(0,1fr);gap:8px;padding:0;min-height:56px}.contact-channel-name{font-size:20px}.contact-handle{font-size:9px}.contact-row{grid-template-columns:17px minmax(0,1fr) 35px;gap:5px;min-height:61px}.contact-row-action,.contact-copy{font-size:8px}.contact-copy{padding-inline:2px;min-height:32px}.contact-light-scene{height:275px;min-height:0;margin:6px -12px -2px;pointer-events:none}.contact-lamp-art{height:122%;width:85%;right:-7px;bottom:-30px}.contact-lamp-note{left:9px;top:43px;max-width:120px;z-index:3;font-size:15px;line-height:1.9}.contact-lamp-switch{right:7px;bottom:2px;font-size:9px}.contact-stage-footer{left:23px;right:23px;bottom:18px;padding-top:12px;font-size:5px;letter-spacing:.04em;gap:10px}.contact-stage-footer>span:last-child{font-size:11px}.contact-status{font-size:9px;min-height:14px;margin-top:9px}.lang-en .contact-primary{grid-template-columns:94px minmax(0,1fr)}.lang-en .contact-channel-name{font-size:17px}.lang-en .contact-letter h2{font-size:38px}.lang-en .contact-lamp-note{font-size:14px}.personal-contact+.unified-ending>p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.contact-stage *{transition:none!important}.contact-lamp-art{transform:none!important}}
+
+.personal-contact:focus{outline:none}
+@media(max-width:520px){.contact-copy{min-height:44px}.contact-lamp-switch{min-height:40px}}
+.contact-stage[data-light='off'] .contact-row.is-lit .contact-channel-name{background:transparent;color:#e8ebd6}
+/* Keep account details readable and the handwritten note clear of the lampshade. */
+.contact-handle{font-size:12px}.contact-row-action,.contact-copy{font-size:10px}
+.contact-lamp-note{left:auto;right:-2px;top:-16px;max-width:180px;text-align:right;font-size:15px}
+@media(max-width:1000px){.contact-handle{font-size:11px}.contact-lamp-note{font-size:13px;max-width:150px}}
+@media(max-width:760px){.contact-lamp-note{right:-8px;top:0;max-width:120px;text-align:right}}
+@media(max-width:520px){.contact-handle{font-size:10px}.contact-row-action,.contact-copy{font-size:9px}.contact-lamp-note{left:9px;right:auto;top:43px;text-align:left;font-size:15px;max-width:120px}}
+@media(max-width:520px){.contact-primary{grid-template-columns:75px minmax(0,1fr)}.contact-handle{font-size:11px}.lang-en .contact-primary{grid-template-columns:94px minmax(0,1fr)}}
+@media(max-width:520px){.contact-lamp-note{left:3px;top:-12px;max-width:170px;font-size:13px;line-height:1.6;transform:none}}
+
+/* One shared edge for the About folder, contact card, and section headings. */
+.personal-about,.personal-contact{--personal-panel-width:94%}
+.personal-about .about-folder,.personal-contact .contact-stage,.about-section-top,.contact-section-top{width:var(--personal-panel-width);max-width:1230px;margin-inline:auto}
+.personal-about .about-folder{transform:none}
+.contact-lamp-note{right:-14px;top:-22px}
+@media(max-width:900px){.personal-about,.personal-contact{--personal-panel-width:97%}}
+@media(max-width:650px){.personal-about,.personal-contact{--personal-panel-width:100%}}
+@media(max-width:760px){.contact-lamp-note{right:-8px;top:0}}
+@media(max-width:520px){.contact-lamp-note{left:3px;right:auto;top:-12px}.contact-lamp-switch{left:11px;right:auto;bottom:12px}}

@@ -1,0 +1,39 @@
+.camera-station .camera-shutter{position:relative;display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;text-align:center}
+.camera-station .camera-body{display:block;width:100%;height:auto;max-height:215px;object-fit:contain;user-select:none;pointer-events:none}
+.camera-station:hover .camera-visual,.camera-station:focus-within .camera-visual{transform:none}
+.camera-shutter:focus-visible{outline:2px dashed #f5efcf;outline-offset:7px;border-radius:10px}
+.camera-shutter:after{content:"";position:absolute;left:32%;top:15%;width:18%;aspect-ratio:1;border-radius:50%;background:#fff8d4;opacity:0;box-shadow:0 0 35px 18px #fff4be;pointer-events:none}
+.camera-print-preview{position:absolute;left:10%;top:55%;width:80%;height:225px;overflow:hidden;visibility:hidden;pointer-events:none;z-index:5}
+.camera-station[data-photo-ready="true"] .camera-print-preview{visibility:visible}
+.camera-printed-photo{position:relative;display:block;box-sizing:border-box;width:calc(100% - 16px);margin:0 auto;padding:6px 6px 23px;background:#f8f3e4;border:1px solid #c8bfa6;box-shadow:0 2px 3px #15231130,3px 8px 12px #15231166;transform:translateY(-112%);transform-origin:top center}
+.camera-printed-photo>img{display:block;width:100%;aspect-ratio:1.35;object-fit:cover;background:#233728}
+.camera-print-caption{position:absolute;left:4px;right:4px;bottom:5px;font:8px/1.4 "KaiTi","STKaiti",serif;color:#514e3f;white-space:nowrap}
+.camera-station>.camera-print-space{display:block;width:100%;max-width:none;height:0;margin:0;padding:0;background:none;transition:height .4s ease}
+.camera-station[data-photo-ready="true"]>.camera-print-space{height:80px}
+.camera-station>.station-label{gap:5px}
+.camera-station .station-label>a{display:flex;align-items:center;gap:9px;color:inherit}
+.camera-station>.camera-print-status{display:block;margin-top:6px;font:10px/1.6 "KaiTi","STKaiti",serif;color:#f1f3dc;text-shadow:0 1px 4px #16380b;min-height:16px}
+.toolkit-original .monitor-bottom i{background:#ed614d;border-color:#914638;box-shadow:0 0 6px #f56b56a6}
+.tools-station-link.station-label{position:absolute;right:0;top:-4px;margin:0;padding:2px 6px;font-size:10px;min-height:22px;z-index:5;background:#173a1370}
+.tools-station-link.station-label .station-number{font-size:9px}
+@media(max-width:650px){.camera-station .camera-body{max-height:215px}.camera-station[data-photo-ready="true"]>.camera-print-space{height:100px}.camera-station>.camera-print-status{font-size:11px}.journey-index{flex-wrap:wrap;justify-content:center;column-gap:15px;row-gap:0}.tools-station-link.station-label{top:-4px}}
+#journey-stage[data-motion="off"] .camera-print-space{transition:none}
+@media(prefers-reduced-motion:reduce){.camera-print-space{transition:none}}
+
+.page-home .red-camera-station{width:22%;max-width:240px;--station-tilt:-6deg}
+@media(min-width:1001px){.page-home .red-camera-station{top:42%}}
+.red-camera-station .camera-body{max-height:none;filter:drop-shadow(2px 5px 3px #1530154d)}
+.red-camera-station .camera-print-preview{left:12%;top:68%;width:76%}
+.red-camera-station[data-photo-ready="true"]>.camera-print-space{height:135px}
+@media(min-width:651px) and (max-width:1000px){.page-home .red-camera-station{width:29%;max-width:240px;top:44%}}
+@media(max-width:650px){.page-home .red-camera-station{width:72%;max-width:250px}.red-camera-station[data-photo-ready="true"]>.camera-print-space{height:145px}}
+
+.skills-practice-links{display:grid;gap:11px;margin-top:23px}
+.skills-practice-links>a{display:flex;align-items:center;gap:13px;padding:10px;background:#f7f3e6;border:1px solid #b9c0a8;color:#344631;text-decoration:none;box-shadow:2px 3px 0 #9da98b55}
+.skills-practice-links img{width:52px;height:58px;object-fit:cover}
+.skills-practice-links a:nth-child(2) img{object-position:center}
+.skills-practice-links a>span{display:flex;flex:1;flex-direction:column;gap:5px;text-align:left}
+.skills-practice-links strong{font-size:13px;font-weight:500}
+.skills-practice-links small{font-size:10px;line-height:1.5;color:#6d795f}
+.skills-practice-links b{font-size:18px;font-weight:400}
+.skills-practice-links a:hover,.skills-practice-links a:focus-visible{background:#e2eacd;outline:1px solid #86996b}

@@ -1,0 +1,25 @@
+.miniapp-case{margin:35px auto 45px;max-width:1100px}
+.miniapp-case-intro{display:flex;justify-content:space-between;align-items:end;gap:20px;color:#f5f1df;margin-bottom:26px}
+.miniapp-case-intro h2{font:500 25px/1.5 "KaiTi","STKaiti",serif;margin:0}
+.miniapp-case-intro p{font-size:11px;margin:8px 0 0;color:#e5ebd2}
+.miniapp-case-intro>span{font:italic 19px/1.5 Georgia,serif;color:#d5e6b4}
+.miniapp-screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(15px,3vw,38px);align-items:start}
+.miniapp-screens figure{margin:0;min-width:0}
+.miniapp-screens button{display:block;width:100%;padding:8px;border:0;background:#f1eddf;cursor:zoom-in;box-shadow:3px 5px 0 #1c381f55}
+.miniapp-screens img{display:block;width:100%;height:auto}
+.miniapp-screens figcaption{display:flex;gap:10px;align-items:center;justify-content:center;color:#f1f3db;font-size:12px;line-height:1.8;margin:13px 0 0}
+.miniapp-screens figcaption small{font:italic 11px/1.5 Georgia,serif;color:#d0e49e}
+.miniapp-image-viewer{border:1px solid #d4dfbc66;padding:48px 14px 14px;width:min(780px,calc(100% - 24px));height:calc(100svh - 28px);max-height:none;background:#183416f0;color:#f6f2df}
+.miniapp-image-viewer::backdrop{background:#0b230bd9}
+.miniapp-image-viewer>img{display:block;width:100%;height:100%;object-fit:contain}
+.miniapp-image-viewer>button{position:absolute;right:12px;top:7px;border:0;background:transparent;color:inherit;padding:9px;cursor:pointer;font-size:12px;min-height:36px}
+.miniapp-cover{position:relative;display:flex;width:265px;height:285px;align-items:center;justify-content:center}
+.miniapp-cover img{position:absolute;width:125px;max-height:265px;object-fit:contain;background:#f2eddf;padding:6px;box-shadow:3px 5px 0 #17311d44}
+.miniapp-cover img:nth-child(1){transform:translateX(-68px) rotate(-9deg)}
+.miniapp-cover img:nth-child(2){transform:translateY(-10px);z-index:1}
+.miniapp-cover img:nth-child(3){transform:translateX(68px) rotate(9deg)}
+@media(max-width:650px){
+ .miniapp-case-intro h2{font-size:22px}.miniapp-case-intro>span{font-size:15px}
+ .miniapp-screens{grid-template-columns:1fr;gap:32px;max-width:330px;margin:auto}
+ .miniapp-screens button{padding:7px}.miniapp-case{margin-top:26px}
+}
