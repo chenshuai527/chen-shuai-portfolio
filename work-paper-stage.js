@@ -24,16 +24,16 @@ if(reel){
     const receiver=new THREE.Mesh(new THREE.PlaneGeometry(150,30),new THREE.ShadowMaterial({opacity:.2,depthWrite:false}));receiver.position.z=-.5;receiver.receiveShadow=true;scene.add(receiver);
     // Keep the real HTML covers visible while textures load. Retry transient
     // hosted image failures instead of turning a failed texture into blank paper.
-    const loadImage=async item=>{
+    const loadImage=async (item,onLateReady)=>{
       const url=new URL(item.src||item.image,document.baseURI);
       const cached=[...document.images].find(image=>image.src===url.href&&image.complete&&image.naturalWidth);
       if(cached)return cached;
       for(let attempt=0;attempt<3;attempt++){
         const image=await new Promise(resolve=>{
-          const image=new Image();let timer;
+          const image=new Image();let timer,timedOut=false;
           const finish=value=>{clearTimeout(timer);image.onload=image.onerror=null;resolve(value);};
-          image.decoding='async';image.onload=()=>finish(image.naturalWidth?image:null);image.onerror=()=>finish(null);
-          timer=setTimeout(()=>finish(null),8000);
+          image.decoding='async';image.onload=()=>{if(timedOut&&image.naturalWidth)onLateReady?.(image);finish(image.naturalWidth?image:null);};image.onerror=()=>finish(null);
+          timer=setTimeout(()=>{timedOut=true;resolve(null);},8000);
           const request=new URL(url);if(attempt)request.searchParams.set('image_retry',String(attempt));image.src=request.href;
         });
         if(image)return image;
@@ -172,7 +172,7 @@ if(reel){
       if(!front){material.map.repeat.x=-1;material.map.offset.x=1;}
       material.needsUpdate=true;
     }
-    function loadGroup(sources,collection,onReady){sources.forEach((item,index)=>{loadImage(item).then(image=>{if(disposed||!image)return;collection[index]=image;onReady(index);});});}
+    function loadGroup(sources,collection,onReady){sources.forEach((item,index)=>{const accept=image=>{if(disposed||!image)return;collection[index]=image;onReady(index);};loadImage(item,accept).then(accept);});}
     // The normal HTML image is also a recovery path if a hosted request arrives
     // after its texture-load timeout. Its cover stays visible until WebGL is ready.
     items.forEach((item,index)=>{
@@ -181,7 +181,8 @@ if(reel){
       image.addEventListener('load',accept);if(image.complete&&image.naturalWidth)accept();
     });
     loadGroup([miniProgram.cover,posterCollectionCover,creatorSkills[1].cover,xReader.cover].map(src=>({src})),coverImages,index=>refreshFace(index,true));
-    loadImage({src:creatorSkills[2].cover}).then(image=>{if(disposed||!image)return;herbalCover=image;refreshFace(2,true);});
+    const acceptHerbal=image=>{if(disposed||!image)return;herbalCover=image;refreshFace(2,true);};
+    loadImage({src:creatorSkills[2].cover},acceptHerbal).then(acceptHerbal);
     loadGroup([posters[0],posters[4],posters[5]],photos,()=>refreshFace(1,false));
     loadGroup(miniProgram.images,miniScreens,()=>refreshFace(0,false));
     loadGroup(creatorSkills,skillImages,()=>refreshFace(2,false));
@@ -226,8 +227,9 @@ if(reel){
       renderer.render(scene,camera);frames++;
       const currentIndex=Number(reel.dataset.index)||0;
       const frontReady=Boolean(currentIndex===2&&reel.dataset.skillCover==='herbal'?herbalCover:coverImages[currentIndex]);
-      const backReady=[miniScreens,photos,skillImages,xImages][currentIndex].every(Boolean);
-      const faceReady=frontReady&&(items[currentIndex].dataset.side!=='back'||backReady);
+      // Back-page headings and layout are ready immediately; populate its
+      // images progressively without interrupting an ongoing 3D flip.
+      const faceReady=frontReady;
       canvas.style.visibility=faceReady?'visible':'hidden';reel.dataset.engine=faceReady?'webgl':'loading';
       reel.dataset.frame=String(frames);reel.dataset.time=time.toFixed(2);reel.dataset.progress=view.toFixed(3);reel.dataset.settled=Math.abs(target-view)<.002&&Math.abs(target-Number(reel.dataset.index))<.002?'true':'false';
       const activeTurn=turns[Number(reel.dataset.index)||0];reel.dataset.flipAngle=activeTurn.angle.toFixed(3);reel.dataset.face=activeTurn.progress<1?'turning':(activeTurn.target?'back':'front');
