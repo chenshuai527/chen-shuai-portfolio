@@ -104,7 +104,7 @@ if(host&&!document.documentElement.classList.contains('is-embedded')){
     }
     new ResizeObserver(resize).observe(host);resize();
     if(stage)new MutationObserver(()=>dirty=true).observe(stage,{attributes:true,attributeFilter:['data-motion']});
-    reduced.addEventListener('change',()=>dirty=true);addEventListener('storage',()=>dirty=true);
+    addEventListener('storage',()=>dirty=true);
     document.addEventListener('pointermove',event=>{if(!enabled())return;uniforms.uPointer.value.set(event.clientX/host.clientWidth,1-event.clientY/host.clientHeight);dirty=true;},{passive:true});
     document.addEventListener('pointerleave',()=>{uniforms.uPointer.value.set(-10,-10);dirty=true;});
     host.dataset.grassEngine='webgl';host.dataset.windMode='gusts-and-blades';
@@ -121,5 +121,5 @@ if(host&&!document.documentElement.classList.contains('is-embedded')){
       host.dataset.windFrame=String(frames);host.dataset.windTime=time.toFixed(2);
     }
     requestAnimationFrame(draw);
-  }catch(error){canvas.remove();host.dataset.grassEngine='static';}
+  }catch(error){canvas.remove();host.dataset.grassEngine='static';host.dataset.grassError=error?.message||'Renderer unavailable';console.warn('The meadow animation could not start; the photographic background remains visible.',error);}
 }
